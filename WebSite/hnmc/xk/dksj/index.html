@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>老家河南</title>
+<style type="text/css">
+	body{background-color: lightgrey;background-image:url("image/body_bg.gif");background-repeat: repeat-x repeat-y;}
+	/*top*/
+		#top{background-color:black;height:40px;color:white;font-family:"华文仿宋";font-size:12px;margin-bottom:5px;box-shadow: -5px 5px 5px #888888;}
+		#top span{position:relative;left:450px;top:10px;font-weight:bolder;}
+	/*container*/
+		#container{position:absolute;left:150px;border: 2px solid lightgrey;margin-top:-10px; box-shadow: -5px 5px 5px #888888;}
+		#container #center{background-image:url(image/center.gif);width:1024px;}
+	/*center_nav*/
+		#center ul{background-color:#727272;position:relative;left:75px;top:0px;}
+		#center ul li{list-style-type:none;float:left;height: 45px;width: 131px;background-image:url(nav/nav_bg.gif);
+		color: white;}
+		#center ul li:hover{background-position:0px 45px;}
+		#center ul li span{font-family: "微软雅黑";}
+		#nav2{background-position: 0px 45px;}
+		#nav1 span{position: relative;top: 10px;left: 45px;}
+		#nav2 span,#nav3 span,#nav4 span,#nav5 span,#nav6 span{position: relative;top: 10px;left: 35px;}
+
+
+		/*fence*/
+		#fence{width:100%;height: 60px; position: relative;margin: 0 auto;top:20px;background-image:url(image/fence.gif);box-shadow: -3px 3px 3px #888888;}
+
+		/*yulan*/
+		#yulan_icon{position:relative;top: 80px;left: 110px;z-index: 2;box-shadow: -3px 3px 3px #888888;}
+
+		/*content*/
+		#content{width: 756px;height:567px;position: relative;top:-10px;margin: 0 auto;background-color: #cec6bc;background:rgba(166,138,101,0.35);z-index: 1;border-radius: 5px;box-shadow:-5px 10px 5px #888888;}
+		.content_part{width: 136px;height: 184px;background-image:url(image/img_border.gif);float: left;margin-right: 40px;margin-top: 28px;}
+		.content_part div {width: 100px;height: 120px;margin-top: 20px;margin-left: 19px;box-shadow: -3px 3px 3px #888888;}
+		.content_part div:hover {box-shadow: -5px 5px 5px #888888;}
+		.content_part span{position: relative;top:5px;left: 40px;font-size:16px;font-weight: bolder;font-family: "华文仿宋"}
+		#infor_box{float: left;width: 704px;margin-top: 86px;margin-left: 50px;}
+		#infor_text{width: 490px;height: 179px;position: relative;left: 170px;top: 30px;}
+		#jieshao{width: 80px;height: 30px;background-color: #cec6bc;background:rgba(166,138,101,0.45);position: absolute;}
+		#jieshao span{color: white;font-family: "华文仿宋";position: relative;left: 20px;top: 5px;}
+		#text{position:absolute;top: 30px;text-indent: 20px;font-size: smaller;font-family: "华文仿宋";line-height:20px;font-weight: bold;}
+		#return{position:absolute;top: 335px;left:510px;width: 100px;height: 20px;}
+		#return a{color: black;font-weight: bolder;text-decoration: none;}
+		#return a:active{color: black;}
+		#return a:hover{color:red;}
+		/*copyright*/
+		#copyright{height:79px;color:white;font-family:"华文仿宋";font-size:12px;background-color:black;box-shadow: -5px 5px 5px #888888;}
+		#copyright span{position:relative;left:450px;top:30px;font-weight:bolder;letter-spacing:1px;}
+		#span2{color:#B00101;}
+
+		/*return_top*/
+		#return_top{width:49px;height:48px;position:fixed;left:1213px;top:540px;background-image:url(icons/return_top.gif);border-radius:5px;}
+		#return_top:hover{background-position:0px 48px;}
+	</style>
+			<link rel="stylesheet" type="text/css" href="lunbo/style.css">
+	<script type="text/javascript" src="lunbo/jquery.js" charset="utf-8"></script>
+	<script type="text/javascript">
+		var t = n = 0, count;
+	$(document).ready(function(){	
+		count=$("#lunbo_list a").length;
+		$("#lunbo_list a:not(:first-child)").hide();
+		$("#lunbo_info").html($("#lunbo_list a:first-child").find("img").attr('alt'));
+		$("#lunbo_info").click(function(){window.open($("#lunbo_list a:first-child").attr('href'), "_blank")});
+		$("#lunbo li").click(function() {
+			var i = $(this).text() - 1;//获取Li元素内的值，即1，2
+			n = i;
+			if (i >= count) return;
+			$("#lunbo_info").unbind().click(function(){window.open($("#lunbo_list a").eq(i).attr('href'), "_blank")})
+			$("#lunbo_list a").filter(":visible").fadeOut(500).parent().children().eq(i).fadeIn(500);
+			document.getElementById("lunbo").style.background="";
+			$(this).toggleClass("on");
+			$(this).siblings().removeAttr("class");
+		});
+		t = setInterval("showAuto()", 2000);
+		$("#lunbo").hover(function(){clearInterval(t)}, function(){t = setInterval("showAuto()", 2000);});
+	})
+	
+	function showAuto()
+	{
+		n = n >=(count - 1) ? 0 : ++n;
+		$("#lunbo li").eq(n).trigger('click');
+	}
+
+	</script>
+
+</head>
+<body>
+<div id="container">
+	<!--top-->
+		<div id="top"><span>欢迎访问&nbsp;老家河南！</span></div>
+	<!--nav-->
+		<div id="center">
+	        	<ul>
+	            	<a href="../../../lunbo/index.html"><li id="nav1"><span>首页</span></li></a>
+					<a href="../../index.html"><li id="nav2"><span>河南名吃</span></li></a>
+	                <a href="../../../whdy/index.html"><li id="nav3"><span>文化底蕴</span></li></a>
+	                <a href="../../../mrsj/index.html"><li id="nav4"><span>名人事迹</span></li></a>
+	                <a href="../../../lsgj/index.html"><li id="nav5"><span>历史古迹</span></li></a>
+	                <a href="../../../fjms/index.html"><li id="nav6"><span>风景名胜</span></li></a>
+	            </ul>
+    <!--lunbo-->
+            <div id="lunbo">
+            	 <ul>
+					<li class="on">1</li>
+					<li>2</li>
+				 </ul>
+				 <div id="lunbo_list">
+					<a href="http://baike.baidu.com/link?url=hhMJe43jC5-ci-wErdVSrZWtMn8PkBSkUWtYEIMNyeyDEAY5DJwJFLcrG84OKrR0eP1LN8F0Cc13Ab0AuAIP_K" target="_blank"><img src="lunbo/images/lmsk.gif" /></a>
+					<a href="http://baike.baidu.com/subview/4479/5224072.htm" target="_blank"><img src="lunbo/images/hh.gif" /></a>
+				 </div>
+            </div>
+	<!--fence-->            
+            <div id="fence"></div>
+	<!--content-->             
+            <img src="icons/xk.gif" id="yulan_icon" />	           
+            <div id="content"> 
+	            <div id="infor_box"> 	            	
+					<div class="content_part">
+							<div>
+								<img src="image/dksj.gif">
+							</div>
+							<span>道口烧鸡</span>
+                  </div>
+					<div id="infor_text">
+						<div id="jieshao"><span>介绍</span></div>
+						<div id="text">
+							<p>道口烧鸡是汉族传统名菜之一，由河南省安阳市滑县道口镇"义兴张"世家烧鸡店所制，是我国著名的特产。 道口烧鸡与北京烤鸭、金华火腿齐名，被誉为"天下第一鸡"。<br/>滑县道口镇，素称烧鸡之乡。美国一家餐厅的华人经理陆德，曾品尝过道口烧鸡，他赞美道:"道口烧鸡肥而不腻，色鲜味美，食用勿需刀，用手一抖，骨肉自行分离。无论冷热，均余香满口。至今回味起来，犹垂涎三尺"。
+</p>
+						</div>
+					</div>
+					<div id="return">【<a href="../../index.html"><span>返回上级</span></a>】</div>
+				</div>
+            </div>            
+        </div>
+	<!--copyright-->        
+		<div id="copyright"><span>课程设计作品之</span><span id="span2">老家河南</span></div>
+	</div>
+
+<a href="javascript:scroll(0,0);"><div id="return_top"></div></a>
+
+
+</body>
+</html>

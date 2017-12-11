@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>老家河南</title>
+	<meta charset="utf-8" />
+	<style type="text/css">
+	body{background-color: lightgrey;background-image: url("images/body_bg.gif");background-repeat: repeat-x repeat-y;}
+	/*top*/
+		#top{background-color:black;height:40px;color:white;font-family:"华文仿宋";font-size:12px;margin-bottom:5px;box-shadow: -5px 5px 5px #888888;}
+		#top span{position:relative;left:450px;top:10px;font-weight:bolder;}
+	/*container*/
+		#container{position:absolute;left:150px;border: 2px solid lightgrey;margin-top:-10px; box-shadow: -5px 5px 5px #888888;}
+		#container #center{background-image:url("images/center.gif");width:1024px;}
+	/*center_nav*/
+		#nav ul{background-color:#727272;position:relative;left:75px;top:0px;}
+		#nav ul li{list-style-type:none;float:left;height: 45px;width: 131px;background-image:url("images/nav/nav_bg.gif");color: white;}
+		#nav ul li:hover{background-position:0px 45px;}
+		#nav ul li span{font-family: "微软雅黑";}
+		#nav1{background-position: 0px 45px;}
+		#nav1 span{position: relative;top: 10px;left: 45px;}
+		#nav2 span,#nav3 span,#nav4 span,#nav5 span,#nav6 span{position: relative;top: 10px;left: 35px;}
+
+
+		/*fence*/
+		#fence{width:100%;height: 60px; position: relative;margin: 0 auto;top:20px;background-image: url("images/fence.gif");box-shadow: -3px 3px 3px #888888;}
+
+		/*content*/
+		#content{width: 756px;height:567px;position: relative;top:-10px;margin: 0 auto;background-color: #cec6bc;background:rgba(166,138,101,0.35);z-index: 1;border-radius: 5px;box-shadow:-5px 10px 5px #888888;
+ }
+
+		/*map*/
+		#map_icon{position:relative;top: 80px;left: 110px;z-index: 2;box-shadow: -3px 3px 3px #888888;}
+		#map_henan img{background: rgba(166,138,101,0);position: absolute;top: 170px;left: 25px;border-right: 2px solid white;}
+		#jianjie img{box-shadow: -4px 1px 4px #888888;}
+		/*map_text*/
+		#map_text{width:362px;text-indent: 20px;float: right;font-size: 18px;line-height: 130%;margin-right: 18px;font-family: "华文仿宋";font-weight:bolder;}
+		#map_text img{position: relative;right: 18px;}
+		#green_none img{float: right;margin-right: -19px;}
+		#fo img{position: relative;top:30px;left: 45px;}
+
+		/*copyright*/
+		#copyright{height:79px;color:white;font-family:"华文仿宋";font-size:12px;background-color:black;box-shadow: -5px 5px 5px #888888;}
+		#copyright span{position:relative;left:450px;top:30px;font-weight:bolder;letter-spacing:1px;}
+		#span2{color:#B00101;}
+
+		/*return_top*/
+		#return_top{width:49px;height:48px;position:fixed;left:1213px;top:540px;background-image:url(icons/return_top.gif);border-radius:5px;}
+		#return_top:hover{background-position:0px 48px;}
+		
+	</style>
+
+	<link rel="stylesheet" type="text/css" href="lunbo/style.css">
+	<script type="text/javascript" src="lunbo/jquery.js" charset="utf-8"></script>
+	<script type="text/javascript">
+		var t = n = 0, count;
+	$(document).ready(function(){	
+		count=$("#lunbo_list a").length;
+		$("#lunbo_list a:not(:first-child)").hide();
+		$("#lunbo_info").html($("#lunbo_list a:first-child").find("img").attr('alt'));
+		$("#lunbo_info").click(function(){window.open($("#lunbo_list a:first-child").attr('href'), "_blank")});
+		$("#lunbo li").click(function() {
+			var i = $(this).text() - 1;//获取Li元素内的值，即1，2
+			n = i;
+			if (i >= count) return;
+			$("#lunbo_info").unbind().click(function(){window.open($("#lunbo_list a").eq(i).attr('href'), "_blank")})
+			$("#lunbo_list a").filter(":visible").fadeOut(500).parent().children().eq(i).fadeIn(500);
+			document.getElementById("lunbo").style.background="";
+			$(this).toggleClass("on");
+			$(this).siblings().removeAttr("class");
+		});
+		t = setInterval("showAuto()", 2000);
+		$("#lunbo").hover(function(){clearInterval(t)}, function(){t = setInterval("showAuto()", 2000);});
+	})
+	
+	function showAuto()
+	{
+		n = n >=(count - 1) ? 0 : ++n;
+		$("#lunbo li").eq(n).trigger('click');
+	}
+
+	</script>
+
+</head>
+<body>
+	<div id="container">
+	<!--top-->
+		<div id="top"><span>欢迎访问&nbsp;老家河南！</span></div>
+	<!--nav-->
+		<div id="center">
+			<div id="nav">
+	        	<ul>
+	            	<a href="index.html"><li id="nav1"><span>首页</span></li></a>
+					<a href="../hnmc/index.html"><li id="nav2"><span>河南名吃</span></li></a>
+	                <a href="../whdy/index.html"><li id="nav3"><span>文化底蕴</span></li></a>
+	                <a href="../mrsj/index.html"><li id="nav4"><span>名人事迹</span></li></a>
+	                <a href="../lsgj/index.html"><li id="nav5"><span>历史古迹</span></li></a>
+	                <a href="../fjms/index.html"><li id="nav6"><span>风景名胜</span></li></a>
+	            </ul>
+			</nav>
+    <!--lunbo-->
+            <div id="lunbo">
+            	 <ul>
+					<li class="on">1</li>
+					<li>2</li>
+				 </ul>
+				 <div id="lunbo_list">
+					<a href="http://baike.baidu.com/link?url=hhMJe43jC5-ci-wErdVSrZWtMn8PkBSkUWtYEIMNyeyDEAY5DJwJFLcrG84OKrR0eP1LN8F0Cc13Ab0AuAIP_K" target="_blank"><img src="lunbo/images/lmsk.gif" /></a>
+					<a href="http://baike.baidu.com/subview/4479/5224072.htm" target="_blank"><img src="lunbo/images/hh.gif" /></a>
+				 </div>
+            </div>
+	<!--fence-->            
+            <div id="fence"></div>
+	<!--content-->             
+            <img src="icons/map.gif" id="map_icon" />	           
+            <div id="content">
+            	<div id="map_henan">
+            		<img src="images/map.gif" />
+            	</div>
+            	<div id="map_text">
+            		<div id="jianjie"><img src="icons/jianjie.gif"></div>
+            		<div>
+            			<p>河南，古称中原、豫州、中州，简称“豫”，因大部分位于黄河以南，故名河南。河南位于中国中东部、黄河中下游，东接安徽、山东，北界河北、山西，西连陕西，南临湖北，呈望北向南、承东启西之势。
+						截至2014年底，河南共下辖17个地级市，1个省直管县级市 ，省会郑州。河南省总人口10662万人，常住人口9436万人。
+						</p>
+            		</div>
+            		<div id="green_none"><img src="icons/green_none.gif" /></div>
+            		<div id="fo"><img src="images/fo.gif" /></div>
+            	</div>
+            </div>            
+        </div>
+	<!--copyright-->        
+		<div id="copyright"><span>课程设计作品之</span><span id="span2">老家河南</span></div>
+	</div>
+	<a href="javascript:scroll(0,0);"><div id="return_top"></div></a>
+	</body>
+</html>

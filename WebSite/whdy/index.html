@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>老家河南</title>
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">
+	body{background-color: lightgrey;background-image:url(image/body_bg.gif);background-repeat: repeat-x repeat-y;}
+	/*top*/
+		#top{background-color:black;height:40px;color:white;font-family:"华文仿宋";font-size:12px;margin-bottom:5px;box-shadow: -5px 5px 5px #888888;}
+		#top span{position:relative;left:450px;top:10px;font-weight:bolder;}
+	/*container*/
+		#container{position:absolute;left:150px;border: 2px solid lightgrey;margin-top:-10px; box-shadow: -5px 5px 5px #888888;}
+		#container #center{background-image:url(image/center.gif);width:1024px;}
+	/*center_nav*/
+		#center ul{background-color:#727272;position:relative;left:75px;top:0px;}
+		#center ul li{list-style-type:none;float:left;height: 45px;width: 131px;background-image:url(nav/nav_bg.gif);
+		color: white;}
+		#center ul li:hover{background-position:0px 45px;}
+		#center ul li span{font-family: "微软雅黑";}
+		#nav3{background-position: 0px 45px;}
+		#nav1 span{position: relative;top: 10px;left: 45px;}
+		#nav2 span,#nav3 span,#nav4 span,#nav5 span,#nav6 span{position: relative;top: 10px;left: 35px;}
+
+
+		/*fence*/
+		#fence{width:100%;height: 60px; position: relative;margin: 0 auto;top:20px;background-image:url(image/fence.gif);box-shadow: -3px 3px 3px #888888;}
+
+		/*yulan*/
+		#yulan_icon{position:relative;top: 80px;left: 110px;z-index: 2;box-shadow: -3px 3px 3px #888888;}
+
+		/*content*/
+		#content{width: 756px;height:567px;position: relative;top:-10px;margin: 0 auto;background-color: #cec6bc;background:rgba(166,138,101,0.35);z-index: 1;border-radius: 5px;box-shadow:-5px 10px 5px #888888;}
+		.content_part{width: 204px;height: 197px;background-image:url(images/video_border.gif);float: left;margin-right: 40px;margin-top: 88px;overflow: }
+		.content_part div {width: 100px;height: 120px;margin-top: 20px;margin-left: 19px;box-shadow: -3px 3px 3px #888888;}
+		#infor_box{float: left;width: 704px;margin-top: 86px;margin-left: 50px;}
+		#infor_text{width: 390px;height: 197px;position: relative;left: 0px;top: 0px;float:left;}
+		#jieshao{width: 80px;height: 30px;background-color: #cec6bc;background:rgba(166,138,101,0.45);position: absolute;}
+		#jieshao span{color: white;font-family: "华文仿宋";position: relative;left: 20px;top: 5px;}
+		#text{position:absolute;top: 30px;text-indent: 20px;font-size: smaller;font-family: "华文仿宋";line-height:20px;font-weight: bold;}
+		#text div{display: none;}
+		#text span{cursor: pointer;float: right;border:1px solid grey;border-radius: 5px;color: #9E0000;padding-right: 15px;}
+		#return{position:absolute;top: 335px;left:510px;width: 100px;height: 20px;}
+		#return a{color: black;font-weight: bolder;text-decoration: none;}
+		#return a:active{color: black;}
+		#return a:hover{color:red;}
+		video{ width:150px;height:150px;position: relative;left: 27px;top: 25px; box-shadow: -3px 3px 3px #888888;}
+		video:hover{box-shadow: -5px 5px 5px #888888;}
+		/*copyright*/
+		#copyright{height:79px;color:white;font-family:"华文仿宋";font-size:12px;background-color:black;box-shadow: -5px 5px 5px #888888;}
+		#copyright span{position:relative;left:450px;top:30px;font-weight:bolder;letter-spacing:1px;}
+		#span2{color:#B00101;}
+		
+		
+		/*return_top*/
+		#return_top{width:49px;height:48px;position:fixed;left:90%;top:80%;background-image:url(icons/return_top.gif);border-radius:5px;}
+		#return_top:hover{background-position:0px 48px;}
+	</style>
+			<link rel="stylesheet" type="text/css" href="lunbo/style.css">
+	<script type="text/javascript" src="lunbo/jquery.js" charset="utf-8"></script>
+	<script type="text/javascript">
+		var t = n = 0, count;
+	$(document).ready(function(){	
+		count=$("#lunbo_list a").length;
+		$("#lunbo_list a:not(:first-child)").hide();
+		$("#lunbo_info").html($("#lunbo_list a:first-child").find("img").attr('alt'));
+		$("#lunbo_info").click(function(){window.open($("#lunbo_list a:first-child").attr('href'), "_blank")});
+		$("#lunbo li").click(function() {
+			var i = $(this).text() - 1;//获取Li元素内的值，即1，2
+			n = i;
+			if (i >= count) return;
+			$("#lunbo_info").unbind().click(function(){window.open($("#lunbo_list a").eq(i).attr('href'), "_blank")})
+			$("#lunbo_list a").filter(":visible").fadeOut(500).parent().children().eq(i).fadeIn(500);
+			document.getElementById("lunbo").style.background="";
+			$(this).toggleClass("on");
+			$(this).siblings().removeAttr("class");
+		});
+		t = setInterval("showAuto()", 2000);
+		$("#lunbo").hover(function(){clearInterval(t)}, function(){t = setInterval("showAuto()", 2000);});
+	})
+	
+	function showAuto()
+	{
+		n = n >=(count - 1) ? 0 : ++n;
+		$("#lunbo li").eq(n).trigger('click');
+	}
+
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			$("#text span").click(function()
+			{
+				if ($("#text span").html()=="更多") 
+				{
+					$("#text div").show(1000);
+					$("#text span").html("收起");
+				} 
+				else
+				{
+					$("#text div").hide(1000);
+					$("#text span").html("更多");
+				};
+			});
+		});
+	</script>
+
+</head>
+<body>
+<div id="container">
+	<!--top-->
+		<div id="top"><span>欢迎访问&nbsp;老家河南！</span></div>
+	<!--nav-->
+		<div id="center">
+	        	<ul>
+	            	<a href="../sy/index.html"><li id="nav1"><span>首页</span></li></a>
+					<a href="../hnmc/index.html"><li id="nav2"><span>河南名吃</span></li></a>
+	                <a href="index.html"><li id="nav3"><span>文化底蕴</span></li></a>
+	                <a href="../mrsj/index.html"><li id="nav4"><span>名人事迹</span></li></a>
+	                <a href="../lsgj/index.html"><li id="nav5"><span>历史古迹</span></li></a>
+	                <a href="../fjms/index.html"><li id="nav6"><span>风景名胜</span></li></a>
+	            </ul>
+    <!--lunbo-->
+            <div id="lunbo">
+            	 <ul>
+					<li class="on">1</li>
+					<li>2</li>
+				 </ul>
+				 <div id="lunbo_list">
+					<a href="http://baike.baidu.com/link?url=hhMJe43jC5-ci-wErdVSrZWtMn8PkBSkUWtYEIMNyeyDEAY5DJwJFLcrG84OKrR0eP1LN8F0Cc13Ab0AuAIP_K" target="_blank"><img src="lunbo/images/lmsk.gif" /></a>
+					<a href="http://baike.baidu.com/subview/4479/5224072.htm" target="_blank"><img src="lunbo/images/hh.gif" /></a>
+				 </div>
+            </div>
+	<!--fence-->            
+            <div id="fence"></div>
+	<!--content-->             
+            <img src="icons/yulan.gif" id="yulan_icon" />	           
+            <div id="content"> 
+	            <div id="infor_box"> 	            	
+					<div class="content_part">
+						<video src="video/yj.mp4" controls poster="images/poster.png">
+							您的浏览器版本太低,<br />请升级至最新版后重<br />新播放该视频....
+						</video>
+                  	</div>
+					<div id="infor_text">
+						<div id="jieshao"><span>介绍</span></div>
+						<div id="text">
+							<p>豫剧是我国最大的地方剧种。2006年，国家文化部门统计的国有专业豫剧团体数量为167个，是21世纪后全国拥有专业戏曲团体和从业人员数量最多的剧种。从全国300多个戏曲剧种中脱颖而出，与京剧、越剧同为中国戏曲三鼎甲（豫剧为榜眼）。</p>
+							<p>鼎盛时期，全国包括西藏等各省（自治区、直辖市）几乎都有专业豫剧团，超过三百个，业余豫剧团更是不计其数。豫剧旧称“河南梆子”、“河南高调”。由于早期演员用本嗓演唱，起腔与收腔时用假声翻高尾音带“讴”，又曾叫“河南讴”。“豫剧”之名最早泛指河南各剧种，直到1947年秋，洛阳、开封、兰州、西安四地报界方以此称谓专指河南梆子。</p>
+							<div>
+							<p>新中国成立后（1952年），在河南梆子的基础上，经过几代老艺术家的不断改革和创新，被官方正式更名为“豫剧”，标志着豫剧艺术产生了质的飞跃，也标志着一门成熟的戏曲艺术开始全面繁荣。豫剧流行于河南、河北、山东、山西、湖北、陕西、甘肃、新疆、台湾、安徽、青海、四川、江苏、北京等十几个省区，是我国最有影响的剧种之一。</p>
+							</div>
+							<span>更多</span>
+						</div>
+					</div>
+				</div>
+				
+            </div>            
+        </div>
+	<!--copyright-->        
+		<div id="copyright"><span>课程设计作品之</span><span id="span2">老家河南</span></div>
+	</div>
+
+<a href="javascript:scroll(0,0);"><div id="return_top"></div></a>
+
+
+
+
+</body>
+</html>
